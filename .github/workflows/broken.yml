@@ -8,5 +8,5 @@ jobs:
     steps:
       - name: First step
         run: echo "first"
-     - name: Second step
+      - name: Second step
         run: echo "second"
