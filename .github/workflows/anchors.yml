@@ -1,0 +1,17 @@
+name: Anchors
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env: &common-env
+      NODE_ENV: test
+      LOG_LEVEL: info
+    steps: &common-steps
+      - run: echo "NODE_ENV=$NODE_ENV LOG_LEVEL=$LOG_LEVEL"
+      - run: echo "Running job $GITHUB_JOB"
+  test:
+    runs-on: ubuntu-latest
+    env: *common-env
+    steps: *common-steps
