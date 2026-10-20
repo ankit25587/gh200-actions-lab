@@ -1,0 +1,16 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      fail:
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Building..."
+      - if: ${{ inputs.fail }}
+        run: exit 1
