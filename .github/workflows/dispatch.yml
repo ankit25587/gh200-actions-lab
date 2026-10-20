@@ -1,0 +1,17 @@
+name: Repository Dispatch
+
+on:
+  repository_dispatch:
+    types: [deploy-now]
+
+jobs:
+  handle:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          ACTION: ${{ github.event.action }}
+          TARGET: ${{ github.event.client_payload.env }}
+          VERSION: ${{ github.event.client_payload.version }}
+        run: |
+          echo "Event type: $ACTION"
+          echo "Deploy $VERSION to $TARGET"
