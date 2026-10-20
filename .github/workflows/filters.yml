@@ -1,15 +1,16 @@
 name: Filters
 
 on:
-  push:
-    branches:
-      - main
-      - "release/**"
-      - "!release/**-alpha"
-    tags:
-      - "v*"
-    paths:
-      - "src/**"
+  workflow_dispatch:
+  #push:
+  #  branches:
+  #    - main
+  #    - "release/**"
+  #    - "!release/**-alpha"
+  #  tags:
+  #    - "v*"
+  #  paths:
+  #    - "src/**"
 
 jobs:
   filtered:
