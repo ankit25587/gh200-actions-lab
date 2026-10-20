@@ -1,0 +1,41 @@
+name: Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      break-tests:
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "build"
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test"
+      - if: ${{ inputs.break-tests }}
+        run: exit 1
+
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "lint"
+
+  deploy:
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploy"
+
+  report:
+    needs: [test, lint]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test=${{ needs.test.result }} lint=${{ needs.lint.result }}"
