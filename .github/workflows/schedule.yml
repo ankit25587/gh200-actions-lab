@@ -1,10 +1,10 @@
 name: Scheduled
 
 on:
-  schedule:
-    - cron: "*/5 * * * *" # every 5 minutes (UTC)
-    - cron: "30 9 * * 1-5" # 09:30, Monday to Friday
-      timezone: "Asia/Kolkata"
+  #schedule:
+  #  - cron: "*/5 * * * *" # every 5 minutes (UTC)
+  #  - cron: "30 9 * * 1-5" # 09:30, Monday to Friday
+  #s    timezone: "Asia/Kolkata"
   workflow_dispatch:
 
 jobs:
